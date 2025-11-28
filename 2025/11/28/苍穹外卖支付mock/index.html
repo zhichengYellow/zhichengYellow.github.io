@@ -27,7 +27,7 @@
 <meta property="og:description" content="苍穹外卖-微信支付功能解决，最小侵入改造微信支付：mock-mode 让退单&#x2F;拒单照常可用 前言在开发或演示苍穹外卖项目时，微信支付环节常常成为效率瓶颈 —— 需配置真实商户号、证书、私钥，还得模拟支付回调，尤其测试退单、拒单等涉及退款的场景时，频繁调用微信 sandbox 环境或真实接口不仅麻烦，还可能产生不必要的测试成本。 本文介绍一种最小侵入式改造方案：通过新增mock-mode开">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-28T12:42:20.000Z">
-<meta property="article:modified_time" content="2025-11-28T12:52:16.517Z">
+<meta property="article:modified_time" content="2025-11-28T12:54:02.704Z">
 <meta property="article:author" content="zc huang">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="spring boot">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.4k 字
+          2.2k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          37 分钟
+          19 分钟
         
       </span>
     
@@ -352,100 +352,7 @@
 <li>生产安全性：mock 与真实流程隔离，生产环境一键切回，无风险。</li>
 </ul>
 <p>若后续需要扩展（如支持支付宝 mock），可参考此思路，在对应工具类中添加开关分支，保持设计一致性。</p>
-<h2 id="————————————————版权声明：本文为CSDN博主「NEFUyellow386」的原创文章，遵循CC-4-0-BY-SA版权协议，转载请附上原文出处链接及本声明。原文链接：https-blog-csdn-net-2401-87905604-article-details-150648202"><a href="#————————————————版权声明：本文为CSDN博主「NEFUyellow386」的原创文章，遵循CC-4-0-BY-SA版权协议，转载请附上原文出处链接及本声明。原文链接：https-blog-csdn-net-2401-87905604-article-details-150648202" class="headerlink" title="————————————————版权声明：本文为CSDN博主「NEFUyellow386」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。原文链接：https://blog.csdn.net/2401_87905604/article/details/150648202"></a>————————————————<br>版权声明：本文为CSDN博主「NEFUyellow386」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2401_87905604/article/details/150648202">https://blog.csdn.net/2401_87905604/article/details/150648202</a></h2><h2 id="title-苍穹外卖支付mockdate-2025-11-28-20-42-20tags-Java-spring-boot-mockcategory-Java-spring-boot"><a href="#title-苍穹外卖支付mockdate-2025-11-28-20-42-20tags-Java-spring-boot-mockcategory-Java-spring-boot" class="headerlink" title="title: 苍穹外卖支付mockdate: 2025-11-28 20:42:20tags:  - Java  - spring boot  - mockcategory:  - Java  - spring boot"></a>title: 苍穹外卖支付mock<br>date: 2025-11-28 20:42:20<br>tags:<br>  - Java<br>  - spring boot<br>  - mock<br>category:<br>  - Java<br>  - spring boot</h2><p>苍穹外卖-微信支付功能解决，最小侵入改造微信支付：mock-mode 让退单&#x2F;拒单照常可用</p>
-<p>前言<br>在开发或演示苍穹外卖项目时，微信支付环节常常成为效率瓶颈 —— 需配置真实商户号、证书、私钥，还得模拟支付回调，尤其测试退单、拒单等涉及退款的场景时，频繁调用微信 sandbox 环境或真实接口不仅麻烦，还可能产生不必要的测试成本。</p>
-<p>本文介绍一种最小侵入式改造方案：通过新增mock-mode开关，实现 “支付 &#x2F; 退款流程短路”，开发 &#x2F; 演示时无需依赖微信三方接口，订单状态仍能正常流转，同时保留真实支付链路，生产环境一键切回。改造仅涉及 3 类核心文件，无业务逻辑重写，兼顾灵活性与安全性。</p>
-<p>一、改造核心思路<br>改造的核心是 <strong>“开关控制分支，不破坏原有逻辑”</strong>，整体流程如下：</p>
-<p>新增配置开关：在微信支付配置类中添加mockMode字段，控制是否启用模拟模式；<br>工具类短路改造：修改支付 &#x2F; 退款工具类，若开启mockMode，直接返回模拟成功结果，跳过真实 HTTP 调用；<br>业务层适配：订单支付业务逻辑中，根据开关分支 ——mock 模式下直接更新订单状态，真实模式走原支付流程；<br>环境配置隔离：开发 &#x2F; 演示环境开启 mock，生产环境关闭，敏感配置不泄露。<br>二、具体改造步骤（附完整代码）<br>2.1 第一步：新增 mock-mode 配置开关<br>在微信支付配置类中添加mockMode字段，默认关闭（避免开发漏改导致生产问题）。</p>
-<p>文件路径：sky-common&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;sky&#x2F;properties&#x2F;WeChatProperties.java</p>
-<p>java</p>
-<p>运行</p>
-<p>package com.sky.properties;</p>
-<p>import lombok.Data;<br>import org.springframework.boot.context.properties.ConfigurationProperties;<br>import org.springframework.stereotype.Component;</p>
-<p>@Component<br>@ConfigurationProperties(prefix &#x3D; “sky.wechat”)<br>@Data<br>public class WeChatProperties {</p>
-<pre><code class="hljs">private String appid;
-private String secret;
-private String mchid;
-private String mchSerialNo;
-private String privateKeyFilePath;
-private String apiV3Key;
-private String weChatPayCertFilePath;
-private String notifyUrl;
-private String refundNotifyUrl;
-
-// 模拟支付/退款开关
-private Boolean mockMode = false;
-</code></pre>
-<p>}<br>一键获取完整项目代码<br>java</p>
-<p>2.2 第二步：支付 &#x2F; 退款工具类短路改造<br>修改WeChatPayUtil，在pay()（下单）和refund()（退款）方法首行添加开关判断 —— 开启 mock 时直接返回模拟结果，不执行真实微信接口调用。</p>
-<p>文件路径：sky-common&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;sky&#x2F;utils&#x2F;WeChatPayUtil.java</p>
-<p>java</p>
-<p>运行</p>
-<p>public JSONObject pay(String orderNum, BigDecimal total, String description, String openid) throws Exception {<br>    if (Boolean.TRUE.equals(weChatProperties.getMockMode()))) {<br>        JSONObject jo &#x3D; new JSONObject();<br>        String timeStamp &#x3D; String.valueOf(System.currentTimeMillis() &#x2F; 1000);<br>        String nonceStr &#x3D; RandomStringUtils.randomNumeric(32);<br>        jo.put(“timeStamp”, timeStamp);<br>        jo.put(“nonceStr”, nonceStr);<br>        jo.put(“package”, “prepay_id&#x3D;mock_prepay_id”);<br>        jo.put(“signType”, “RSA”);<br>        jo.put(“paySign”, “mock-sign”);<br>        return jo;<br>    }<br>    String bodyAsString &#x3D; jsapi(orderNum, total, description, openid);<br>    JSONObject jsonObject &#x3D; JSON.parseObject(bodyAsString);<br>    String prepayId &#x3D; jsonObject.getString(“prepay_id”);<br>    if (prepayId !&#x3D; null) {<br>        String timeStamp &#x3D; String.valueOf(System.currentTimeMillis() &#x2F; 1000);<br>        String nonceStr &#x3D; RandomStringUtils.randomNumeric(32);<br>        ArrayList<Object> list &#x3D; new ArrayList&lt;&gt;();<br>        list.add(weChatProperties.getAppid());<br>        list.add(timeStamp);<br>        list.add(nonceStr);<br>        list.add(“prepay_id&#x3D;” + prepayId);<br>        StringBuilder stringBuilder &#x3D; new StringBuilder();<br>        for (Object o : list) stringBuilder.append(o).append(“\n”);<br>        String signMessage &#x3D; stringBuilder.toString();<br>        byte[] message &#x3D; signMessage.getBytes();</p>
-<pre><code class="hljs">    Signature signature = Signature.getInstance(&quot;SHA256withRSA&quot;);
-    signature.initSign(PemUtil.loadPrivateKey(new FileInputStream(new File(weChatProperties.getPrivateKeyFilePath()))));
-    signature.update(message);
-    String packageSign = Base64.getEncoder().encodeToString(signature.sign());
-
-    JSONObject jo = new JSONObject();
-    jo.put(&quot;timeStamp&quot;, timeStamp);
-    jo.put(&quot;nonceStr&quot;, nonceStr);
-    jo.put(&quot;package&quot;, &quot;prepay_id=&quot; + prepayId);
-    jo.put(&quot;signType&quot;, &quot;RSA&quot;);
-    jo.put(&quot;paySign&quot;, packageSign);
-    return jo;
-&#125;
-return jsonObject;
-</code></pre>
-<p>}</p>
-<p>public String refund(String outTradeNo, String outRefundNo, BigDecimal refund, BigDecimal total) throws Exception {<br>    if (Boolean.TRUE.equals(weChatProperties.getMockMode())) {<br>        return “{&quot;status&quot;:&quot;SUCCESS&quot;,&quot;channel&quot;:&quot;mock&quot;}”;<br>    }<br>    JSONObject jsonObject &#x3D; new JSONObject();<br>    jsonObject.put(“out_trade_no”, outTradeNo);<br>    jsonObject.put(“out_refund_no”, outRefundNo);<br>    JSONObject amount &#x3D; new JSONObject();<br>    amount.put(“refund”, refund.multiply(new BigDecimal(100)).setScale(2, BigDecimal.ROUND_HALF_UP).intValue());<br>    amount.put(“total”, total.multiply(new BigDecimal(100)).setScale(2, BigDecimal.ROUND_HALF_UP).intValue());<br>    amount.put(“currency”, “CNY”);<br>    jsonObject.put(“amount”, amount);<br>    jsonObject.put(“notify_url”, weChatProperties.getRefundNotifyUrl());<br>    String body &#x3D; jsonObject.toJSONString();<br>    return post(REFUNDS, body);<br>}</p>
-<p>一键获取完整项目代码<br>java</p>
-<p>2.3 第三步：订单业务层适配开关<br>在订单支付业务（OrderServiceImpl）中，注入WeChatProperties，根据mockMode分支处理：</p>
-<p>mock 关闭：走原流程（调用WeChatPayUtil.pay()，获取真实支付参数）；<br>mock 开启：直接更新订单状态为 “已支付 &#x2F; 待接单”，并构造与工具类一致的模拟支付 VO。<br>文件路径：sky-server&#x2F;src&#x2F;main&#x2F;java&#x2F;com&#x2F;sky&#x2F;service&#x2F;impl&#x2F;OrderServiceImpl.java</p>
-<p>java</p>
-<p>运行</p>
-<p>import com.sky.properties.WeChatProperties;</p>
-<p>@Autowired<br>private WeChatProperties weChatProperties;</p>
-<p>@Override<br>public OrderPaymentVO payment(OrdersPaymentDTO ordersPaymentDTO) throws Exception{<br>    Long userId &#x3D; BaseContext.getCurrentId();<br>    User user &#x3D; userMapper.getById(userId);<br>    boolean mock &#x3D; Boolean.TRUE.equals(weChatProperties.getMockMode());</p>
-<pre><code class="hljs">if (!mock) &#123;
-    JSONObject jsonObject = weChatPayUtil.pay(
-            ordersPaymentDTO.getOrderNumber(),
-            new BigDecimal(0.01),
-            &quot;苍穹外卖订单&quot;,
-            user.getOpenid()
-    );
-    if (jsonObject.getString(&quot;code&quot;) != null &amp;&amp; jsonObject.getString(&quot;code&quot;).equals(&quot;ORDERPAID&quot;)) &#123;
-        throw new OrderBusinessException(&quot;该订单已支付&quot;);
-    &#125;
-    OrderPaymentVO vo = jsonObject.toJavaObject(OrderPaymentVO.class);
-    vo.setPackageStr(jsonObject.getString(&quot;package&quot;));
-    return vo;
-&#125;
-
-// 模拟支付：直接置为已支付、待接单
-orderMapper.updateStatus(Orders.TO_BE_CONFIRMED, Orders.PAID, LocalDateTime.now(), ordersPaymentDTO.getOrderNumber());
-
-OrderPaymentVO vo = new OrderPaymentVO();
-vo.setNonceStr(&quot;mock-nonce&quot;);
-vo.setTimeStamp(String.valueOf(System.currentTimeMillis() / 1000));
-vo.setSignType(&quot;RSA&quot;);
-vo.setPackageStr(&quot;prepay_id=mock_prepay_id&quot;);
-vo.setPaySign(&quot;mock-sign&quot;);
-return vo;
-</code></pre>
-<p>}<br>一键获取完整项目代码<br>java</p>
-<p>2.4 第四步：环境配置（开发 &#x2F; 生产隔离）<br>在开发环境配置文件中开启mock-mode，生产环境保持关闭（并配置真实商户信息），避免敏感信息泄露。</p>
-<p>文件路径：sky-server&#x2F;src&#x2F;main&#x2F;resources&#x2F;application-dev.yml</p>
-<p>yaml</p>
-<p>sky:<br>  wechat:<br>    # 开发环境：开启mock模式，无需配置真实商户信息<br>    mock-mode: true<br>    # 真实配置（开发环境可注释，生产环境需填写）<br>    # mchid: 1234567890<br>    # private-key: 你的私钥<br>    # certificate: 证书路径<br>    # notify-url: https:&#x2F;&#x2F;你的域名&#x2F;wechat&#x2F;pay&#x2F;notify<br>一键获取完整项目代码<br>生产环境配置参考（application-prod.yml）：</p>
-<p>yaml</p>
-<p>sky:<br>  wechat:<br>    # 生产环境：强制关闭mock，使用真实支付<br>    mock-mode: false<br>    # 真实商户配置（需替换为自己的信息，且不提交到代码仓库）<br>    mchid: 你的真实商户号<br>    private-key: classpath:cert&#x2F;你的私钥.pem<br>    certificate: classpath:cert&#x2F;你的证书.p12<br>    notify-url: https:&#x2F;&#x2F;你的生产域名&#x2F;wechat&#x2F;pay&#x2F;notify<br>一键获取完整项目代码<br>三、改造效果验证<br>改造后，无需依赖微信接口即可完成支付、退单、拒单全流程测试，验证步骤如下：</p>
-<p>3.1 验证 “模拟支付” 流程<br>下单：调用用户端下单接口，生成待支付订单（status&#x3D;1，pay_status&#x3D;0）；<br>发起支付：调用PUT &#x2F;user&#x2F;order&#x2F;payment接口，传入订单号；<br>查库验证：查询orders表，确认订单状态更新为：<br>status&#x3D;2（待接单）<br>pay_status&#x3D;1（已支付）<br>checkout_time（支付时间）非空。<br>3.2 验证 “模拟退款” 流程<br>发起退单：用户取消订单（或商家拒单），触发退款逻辑；<br>日志验证：查看控制台日志，应出现类似模拟退款成功，订单号：xxx，退款单号：xxx的信息（可在WeChatPayUtil.refund()的 mock 分支中添加日志）；<br>业务验证：退款后订单状态正常流转（如 “已取消”），无报错。<br>3.3 验证 “真实支付” 切换<br>将application-dev.yml中mock-mode改为false，并配置真实商户信息；<br>重复 3.1 步骤，此时会调用真实微信支付接口，返回真实prepay_id，需用微信扫码或小程序调起支付；<br>支付成功后，微信会回调notify-url，订单状态正常更新（与改造前一致）。<br>四、注意事项（避坑指南）<br>敏感配置不提交仓库<br>商户号、私钥、证书等敏感信息，需通过环境变量或配置中心注入，禁止硬编码或提交到 Git 仓库（可在.gitignore中添加cert&#x2F;目录，忽略证书文件）。</p>
-<p>mock 仅用于开发 &#x2F; 演示<br>生产环境必须将mock-mode设为false，并完成微信支付的全链路配置（包括回调接口的 SSL 证书、商户号权限开通等），否则会导致真实支付失败。</p>
-<p>模拟参数格式与真实一致<br>mock 返回的timeStamp（秒级，非毫秒级）、package（前缀prepay_id&#x3D;）、signType（RSA）等参数格式，必须与微信真实返回一致，避免前端调起支付时解析报错。</p>
-<p>日志区分 mock 与真实<br>在WeChatPayUtil的 mock 分支中添加明确日志（如log.info(“模拟支付成功，订单号：{}”, orderNumber)），便于问题排查时区分 “模拟” 和 “真实” 流程。</p>
-<p>五、改造总结<br>本次改造是 <strong>“最小侵入式”</strong> 的典范 —— 仅修改 3 类文件，新增 1 个开关，不破坏原有业务逻辑，实现了：</p>
-<p>开发效率提升：无需配置微信 sandbox 环境，1 分钟完成支付 &#x2F; 退款测试；<br>演示灵活性：对外演示时，无需真实支付，直接展示全流程；<br>生产安全性：mock 与真实流程隔离，生产环境一键切回，无风险。<br>若后续需要扩展（如支持支付宝 mock），可参考此思路，在对应工具类中添加开关分支，保持设计一致性。<br>————————————————<br>版权声明：本文为CSDN博主「NEFUyellow386」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2401_87905604/article/details/150648202">https://blog.csdn.net/2401_87905604/article/details/150648202</a></p>
+<p>————————————————<br>版权声明：本文为CSDN博主「NEFUyellow386」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2401_87905604/article/details/150648202">https://blog.csdn.net/2401_87905604/article/details/150648202</a></p>
 
                 
               </div>
