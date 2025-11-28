@@ -27,7 +27,7 @@
 <meta property="og:description" content="微服务架构的学习笔记，Spring Cloud">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-28T12:33:24.000Z">
-<meta property="article:modified_time" content="2025-11-28T12:37:18.396Z">
+<meta property="article:modified_time" content="2025-11-28T13:16:14.212Z">
 <meta property="article:author" content="zc huang">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="spring cloud alibaba">
@@ -279,7 +279,7 @@
               <div class="markdown-body">
                 
                 <h2 id="Nacos配置核心要点"><a href="#Nacos配置核心要点" class="headerlink" title="Nacos配置核心要点"></a>Nacos配置核心要点</h2><h3 id="1-配置文件设置"><a href="#1-配置文件设置" class="headerlink" title="1. 配置文件设置"></a>1. 配置文件设置</h3><ul>
-<li>使用<a href="file:///Users/binyellow/java-study/hmall/pay-service/target/classes/bootstrap.yaml">bootstrap.yaml</a>而不是<a href="file:///Users/binyellow/java-study/hmall/pay-service/target/classes/application.yaml">application.yaml</a>来配置Nacos注册中心参数</li>
+<li>使用<a href="file://hmall/pay-service/target/classes/bootstrap.yaml">bootstrap.yaml</a>而不是<a href="file:///hmall/pay-service/target/classes/application.yaml">application.yaml</a>来配置Nacos注册中心参数</li>
 <li>必须包含以下基本配置项：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">服务名称</span> <span class="hljs-comment"># 如user-service</span><br>  <span class="hljs-attr">cloud:</span><br>    <span class="hljs-attr">nacos:</span><br>      <span class="hljs-attr">server-addr:</span> <span class="hljs-string">Nacos服务器地址</span> <span class="hljs-comment"># 如127.0.0.1:8848</span><br>      <span class="hljs-attr">discovery:</span><br>        <span class="hljs-attr">namespace:</span> <span class="hljs-string">命名空间ID</span> <span class="hljs-comment"># 可选</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="2-依赖配置"><a href="#2-依赖配置" class="headerlink" title="2. 依赖配置"></a>2. 依赖配置</h3><p>主要需要以下依赖：</p>
