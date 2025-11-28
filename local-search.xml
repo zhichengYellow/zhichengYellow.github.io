@@ -4,12 +4,49 @@
   
   
   <entry>
+    <title>微服务学习笔记</title>
+    <link href="/2025/11/28/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2025/11/28/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Nacos配置核心要点"><a href="#Nacos配置核心要点" class="headerlink" title="Nacos配置核心要点"></a>Nacos配置核心要点</h2><h3 id="1-配置文件设置"><a href="#1-配置文件设置" class="headerlink" title="1. 配置文件设置"></a>1. 配置文件设置</h3><ul><li>使用<a href="file:///Users/binyellow/java-study/hmall/pay-service/target/classes/bootstrap.yaml">bootstrap.yaml</a>而不是<a href="file:///Users/binyellow/java-study/hmall/pay-service/target/classes/application.yaml">application.yaml</a>来配置Nacos注册中心参数</li><li>必须包含以下基本配置项：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">服务名称</span> <span class="hljs-comment"># 如user-service</span><br>  <span class="hljs-attr">cloud:</span><br>    <span class="hljs-attr">nacos:</span><br>      <span class="hljs-attr">server-addr:</span> <span class="hljs-string">Nacos服务器地址</span> <span class="hljs-comment"># 如127.0.0.1:8848</span><br>      <span class="hljs-attr">discovery:</span><br>        <span class="hljs-attr">namespace:</span> <span class="hljs-string">命名空间ID</span> <span class="hljs-comment"># 可选</span><br></code></pre></td></tr></table></figure></li></ul><h3 id="2-依赖配置"><a href="#2-依赖配置" class="headerlink" title="2. 依赖配置"></a>2. 依赖配置</h3><p>主要需要以下依赖：</p><ul><li><code>spring-cloud-starter-alibaba-nacos-discovery</code> - Nacos服务发现</li><li><code>spring-cloud-starter-openfeign</code> - Feign客户端（如需服务间调用）</li><li><code>spring-cloud-starter-loadbalancer</code> - 负载均衡（配合Feign使用）</li></ul><h3 id="3-主应用类注解"><a href="#3-主应用类注解" class="headerlink" title="3. 主应用类注解"></a>3. 主应用类注解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-meta">@EnableDiscoveryClient</span> <span class="hljs-comment">// 启用服务发现</span><br><span class="hljs-meta">@EnableFeignClients(basePackages = &quot;com.hmall.api.client&quot;, defaultConfiguration = DefaultFeignConfig.class)</span> <span class="hljs-comment">// 如使用Feign</span><br></code></pre></td></tr></table></figure><h3 id="4-常见问题及解决方案"><a href="#4-常见问题及解决方案" class="headerlink" title="4. 常见问题及解决方案"></a>4. 常见问题及解决方案</h3><h4 id="服务无法注册问题"><a href="#服务无法注册问题" class="headerlink" title="服务无法注册问题"></a>服务无法注册问题</h4><ul><li>检查是否缺少bootstrap.yaml文件</li><li>确认主应用类是否添加了@EnableDiscoveryClient注解</li><li>检查Nacos服务地址配置是否正确</li></ul><h4 id="Feign客户端问题"><a href="#Feign客户端问题" class="headerlink" title="Feign客户端问题"></a>Feign客户端问题</h4><ul><li>确保添加了spring-cloud-starter-openfeign依赖</li><li>正确配置@EnableFeignClients注解</li><li>不要手动配置Feign的customizers，让Spring Cloud自动配置</li></ul><h4 id="负载均衡问题"><a href="#负载均衡问题" class="headerlink" title="负载均衡问题"></a>负载均衡问题</h4><ul><li>添加spring-cloud-starter-loadbalancer依赖</li><li>确保服务间调用使用服务名而不是硬编码地址</li></ul><h3 id="5-多服务一致性"><a href="#5-多服务一致性" class="headerlink" title="5. 多服务一致性"></a>5. 多服务一致性</h3><p>在我们的hmall项目中，user-service、trade-service、pay-service等都需要相同的Nacos配置模式才能正常工作。</p><p>以上就是我们处理Nacos配置过程中的关键知识点，这些都是保证微服务能够正常注册和发现的重要配置要素。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Java</category>
+      
+      <category>微服务</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+      <tag>spring cloud alibaba</tag>
+      
+      <tag>nacos</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>usage</title>
     <link href="/2025/11/28/usage/"/>
     <url>/2025/11/28/usage/</url>
     
     <content type="html"><![CDATA[<p>这份 <strong>“Hexo 博客管理速查手册”</strong> 是专门为你准备的。你可以把它保存到笔记软件里，以后忘记指令了就看一眼。</p><p>这里包含了<strong>写文章</strong>、<strong>搞分类</strong>、<strong>发布更新</strong>以及<strong>Fluid 主题特有设置</strong>的完整流程。</p><hr><h3 id="一、-日常写作三部曲-最常用"><a href="#一、-日常写作三部曲-最常用" class="headerlink" title="一、 日常写作三部曲 (最常用)"></a>一、 日常写作三部曲 (最常用)</h3><p>这是你以后每次写博客都会重复的流程。</p><h4 id="1-创建新文章"><a href="#1-创建新文章" class="headerlink" title="1. 创建新文章"></a>1. 创建新文章</h4><p>打开终端，进入博客根目录：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new <span class="hljs-string">&quot;文章标题&quot;</span><br><span class="hljs-comment"># 例子：hexo new &quot;Docker学习笔记&quot;</span><br></code></pre></td></tr></table></figure><ul><li>系统会提示你文件生成在 <code>source/_posts/Docker学习笔记.md</code>。</li><li>用 VS Code 或记事本打开这个文件开始写作。</li></ul><h4 id="2-必须掌握的头部写法-Front-matter"><a href="#2-必须掌握的头部写法-Front-matter" class="headerlink" title="2. 必须掌握的头部写法 (Front-matter)"></a>2. 必须掌握的头部写法 (Front-matter)</h4><p>在文章的最顶部，决定了文章的分类和标签。<strong>注意冒号后必须有空格！</strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: Docker学习笔记<br>date: 2025-11-28 20:30:00<br>tags: <br><span class="hljs-bullet">  -</span> Docker<br><span class="hljs-bullet">  -</span> 运维<br>categories: <br><span class="hljs-bullet">  -</span> 后端技术<br><span class="hljs-section">  - 容器化</span><br><span class="hljs-section">---</span><br>这里开始写正文...<br></code></pre></td></tr></table></figure><ul><li>**tags (标签)**：像关键词，一篇文章可以有多个（比如：Java, 笔记）。</li><li>**categories (分类)**：像文件夹，支持多级（比如：后端技术 -&gt; Java）。</li></ul><h4 id="3-本地预览"><a href="#3-本地预览" class="headerlink" title="3. 本地预览"></a>3. 本地预览</h4><p>写完后，先在本地看看效果：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo s<br></code></pre></td></tr></table></figure><p>打开 <code>localhost:4000</code> 检查无误后，按 <code>Ctrl + C</code> 停止服务。</p><hr><h3 id="二、-发布与更新-上传到-GitHub"><a href="#二、-发布与更新-上传到-GitHub" class="headerlink" title="二、 发布与更新 (上传到 GitHub)"></a>二、 发布与更新 (上传到 GitHub)</h3><p>无论是<strong>发布新文章</strong>，还是<strong>修改了错别字</strong>，或者是<strong>改了主题配置</strong>，统一都用这套“三连击”指令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 清理旧缓存 (防止页面没变、样式错乱)</span><br>hexo clean<br><br><span class="hljs-comment"># 2. 生成静态网页 (把 Markdown 变成 HTML)</span><br>hexo g<br><br><span class="hljs-comment"># 3. 推送到 GitHub (Go Live!)</span><br>hexo d<br></code></pre></td></tr></table></figure><p>💡 <strong>偷懒技巧</strong>：你可以把这三行合并成一行运行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d<br></code></pre></td></tr></table></figure><hr><h3 id="三、-开启“分类”和“标签”页面-Fluid-主题必做"><a href="#三、-开启“分类”和“标签”页面-Fluid-主题必做" class="headerlink" title="三、 开启“分类”和“标签”页面 (Fluid 主题必做)"></a>三、 开启“分类”和“标签”页面 (Fluid 主题必做)</h3><p>在 Fluid 主题中，菜单栏上的“分类”和“标签”按钮，<strong>默认点击是 404 的</strong>。你需要手动创建这两个特殊的页面（<strong>只需要做一次</strong>）。</p><h4 id="1-开启“分类”页"><a href="#1-开启“分类”页" class="headerlink" title="1. 开启“分类”页"></a>1. 开启“分类”页</h4><p>在终端运行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page categories<br></code></pre></td></tr></table></figure><p>然后去编辑生成的文件 <code>source/categories/index.md</code>，把内容改成：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 分类<br>date: 2025-11-28 20:00:00<br>type: categories  &lt;-- 这一行最关键，告诉主题这是分类页<br><span class="hljs-section">layout: categories</span><br><span class="hljs-section">---</span><br></code></pre></td></tr></table></figure><p><em>(注意：正文留空即可，不要写东西)</em></p><h4 id="2-开启“标签”页"><a href="#2-开启“标签”页" class="headerlink" title="2. 开启“标签”页"></a>2. 开启“标签”页</h4><p>在终端运行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page tags<br></code></pre></td></tr></table></figure><p>去编辑 <code>source/tags/index.md</code>，改为：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 标签<br>date: 2025-11-28 20:00:00<br>type: tags       &lt;-- 这一行最关键<br><span class="hljs-section">layout: tags</span><br><span class="hljs-section">---</span><br></code></pre></td></tr></table></figure><p>做完这两步后，运行 <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code>，点击菜单栏的按钮，就能自动把你所有文章的分类和标签汇总展示出来了。</p><hr><h3 id="四、-常用指令速查表"><a href="#四、-常用指令速查表" class="headerlink" title="四、 常用指令速查表"></a>四、 常用指令速查表</h3><table><thead><tr><th align="left">简写指令</th><th align="left">完整指令</th><th align="left">作用</th><th align="left">备注</th></tr></thead><tbody><tr><td align="left"><code>hexo n &quot;...&quot;</code></td><td align="left"><code>hexo new &quot;...&quot;</code></td><td align="left"><strong>新建文章</strong></td><td align="left">生成在 <code>source/_posts</code></td></tr><tr><td align="left"><code>hexo s</code></td><td align="left"><code>hexo server</code></td><td align="left"><strong>启动本地预览</strong></td><td align="left">访问 <code>localhost:4000</code></td></tr><tr><td align="left"><code>hexo g</code></td><td align="left"><code>hexo generate</code></td><td align="left"><strong>生成网页</strong></td><td align="left">编译 Markdown 为 HTML</td></tr><tr><td align="left"><code>hexo d</code></td><td align="left"><code>hexo deploy</code></td><td align="left"><strong>部署&#x2F;发布</strong></td><td align="left">推送到 GitHub</td></tr><tr><td align="left"><code>hexo clean</code></td><td align="left"><code>hexo clean</code></td><td align="left"><strong>清理缓存</strong></td><td align="left"><strong>遇到玄学问题先执行它</strong></td></tr><tr><td align="left"><code>hexo new page &quot;...&quot;</code></td><td align="left"><code>hexo new page &quot;...&quot;</code></td><td align="left"><strong>新建独立页面</strong></td><td align="left">如“关于我”、“友情链接”</td></tr></tbody></table><h3 id="五、-如果我想换电脑写博客怎么办？"><a href="#五、-如果我想换电脑写博客怎么办？" class="headerlink" title="五、 如果我想换电脑写博客怎么办？"></a>五、 如果我想换电脑写博客怎么办？</h3><p>这是很多新手容易踩的坑。<strong>GitHub 仓库 (<code>yellow386.github.io</code>) 里存的只是生成的网页 (HTML)，不是你的源代码 (Markdown)！</strong></p><p>为了防止电脑坏了导致博客源码丢失，建议你做最后一件重要的事：</p><ol><li>在 GitHub 上新建一个仓库，叫 <code>hexo-blog-source</code> (名字随意，设为 Private 私有仓库最好)。</li><li>把你的 <code>s</code> 文件夹整个上传到这个新仓库里备份。</li><li>以后每次写完，除了 <code>hexo d</code> 发布网页外，记得也要把源码 <code>git push</code> 到这个私有仓库备份。</li></ol><p>现在，你的博客技能树已经点满了！去写下你的第一篇技术总结吧！🚀</p>]]></content>
     
+    
+    <categories>
+      
+      <category>Guide</category>
+      
+    </categories>
     
     
     <tags>
@@ -29,6 +66,12 @@
     
     <content type="html"><![CDATA[<p>以此来纪念我创作的第一篇博客！<br>(建议把这句话写在正文里，而不是作为标签)</p>]]></content>
     
+    
+    <categories>
+      
+      <category>Blog</category>
+      
+    </categories>
     
     
     <tags>
