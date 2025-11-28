@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zc huang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="这份 “Hexo 博客管理速查手册” 是专门为你准备的。你可以把它保存到笔记软件里，以后忘记指令了就看一眼。 这里包含了写文章、搞分类、发布更新以及Fluid 主题特有设置的完整流程。  一、 日常写作三部曲 (最常用)这是你以后每次写博客都会重复的流程。 1. 创建新文章打开终端，进入博客根目录： 12hexo new &quot;文章标题&quot;# 例子：hexo new &quot;Do">
+<meta property="og:type" content="article">
+<meta property="og:title" content="usage">
+<meta property="og:url" content="http://example.com/2025/11/28/usage/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这份 “Hexo 博客管理速查手册” 是专门为你准备的。你可以把它保存到笔记软件里，以后忘记指令了就看一眼。 这里包含了写文章、搞分类、发布更新以及Fluid 主题特有设置的完整流程。  一、 日常写作三部曲 (最常用)这是你以后每次写博客都会重复的流程。 1. 创建新文章打开终端，进入博客根目录： 12hexo new &quot;文章标题&quot;# 例子：hexo new &quot;Do">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-28T12:23:43.000Z">
+<meta property="article:modified_time" content="2025-11-28T12:24:30.636Z">
+<meta property="article:author" content="zc huang">
+<meta property="article:tag" content="how to use io">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>usage - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="usage"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-11-28 20:23" pubdate>
+          2025年11月28日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          912 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">usage</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>这份 <strong>“Hexo 博客管理速查手册”</strong> 是专门为你准备的。你可以把它保存到笔记软件里，以后忘记指令了就看一眼。</p>
+<p>这里包含了<strong>写文章</strong>、<strong>搞分类</strong>、<strong>发布更新</strong>以及<strong>Fluid 主题特有设置</strong>的完整流程。</p>
+<hr>
+<h3 id="一、-日常写作三部曲-最常用"><a href="#一、-日常写作三部曲-最常用" class="headerlink" title="一、 日常写作三部曲 (最常用)"></a>一、 日常写作三部曲 (最常用)</h3><p>这是你以后每次写博客都会重复的流程。</p>
+<h4 id="1-创建新文章"><a href="#1-创建新文章" class="headerlink" title="1. 创建新文章"></a>1. 创建新文章</h4><p>打开终端，进入博客根目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new <span class="hljs-string">&quot;文章标题&quot;</span><br><span class="hljs-comment"># 例子：hexo new &quot;Docker学习笔记&quot;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>系统会提示你文件生成在 <code>source/_posts/Docker学习笔记.md</code>。</li>
+<li>用 VS Code 或记事本打开这个文件开始写作。</li>
+</ul>
+<h4 id="2-必须掌握的头部写法-Front-matter"><a href="#2-必须掌握的头部写法-Front-matter" class="headerlink" title="2. 必须掌握的头部写法 (Front-matter)"></a>2. 必须掌握的头部写法 (Front-matter)</h4><p>在文章的最顶部，决定了文章的分类和标签。<strong>注意冒号后必须有空格！</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: Docker学习笔记<br>date: 2025-11-28 20:30:00<br>tags: <br><span class="hljs-bullet">  -</span> Docker<br><span class="hljs-bullet">  -</span> 运维<br>categories: <br><span class="hljs-bullet">  -</span> 后端技术<br><span class="hljs-section">  - 容器化</span><br><span class="hljs-section">---</span><br>这里开始写正文...<br></code></pre></td></tr></table></figure>
+<ul>
+<li>**tags (标签)**：像关键词，一篇文章可以有多个（比如：Java, 笔记）。</li>
+<li>**categories (分类)**：像文件夹，支持多级（比如：后端技术 -&gt; Java）。</li>
+</ul>
+<h4 id="3-本地预览"><a href="#3-本地预览" class="headerlink" title="3. 本地预览"></a>3. 本地预览</h4><p>写完后，先在本地看看效果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo s<br></code></pre></td></tr></table></figure>
+<p>打开 <code>localhost:4000</code> 检查无误后，按 <code>Ctrl + C</code> 停止服务。</p>
+<hr>
+<h3 id="二、-发布与更新-上传到-GitHub"><a href="#二、-发布与更新-上传到-GitHub" class="headerlink" title="二、 发布与更新 (上传到 GitHub)"></a>二、 发布与更新 (上传到 GitHub)</h3><p>无论是<strong>发布新文章</strong>，还是<strong>修改了错别字</strong>，或者是<strong>改了主题配置</strong>，统一都用这套“三连击”指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 清理旧缓存 (防止页面没变、样式错乱)</span><br>hexo clean<br><br><span class="hljs-comment"># 2. 生成静态网页 (把 Markdown 变成 HTML)</span><br>hexo g<br><br><span class="hljs-comment"># 3. 推送到 GitHub (Go Live!)</span><br>hexo d<br></code></pre></td></tr></table></figure>
+
+<p>💡 <strong>偷懒技巧</strong>：你可以把这三行合并成一行运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="三、-开启“分类”和“标签”页面-Fluid-主题必做"><a href="#三、-开启“分类”和“标签”页面-Fluid-主题必做" class="headerlink" title="三、 开启“分类”和“标签”页面 (Fluid 主题必做)"></a>三、 开启“分类”和“标签”页面 (Fluid 主题必做)</h3><p>在 Fluid 主题中，菜单栏上的“分类”和“标签”按钮，<strong>默认点击是 404 的</strong>。你需要手动创建这两个特殊的页面（<strong>只需要做一次</strong>）。</p>
+<h4 id="1-开启“分类”页"><a href="#1-开启“分类”页" class="headerlink" title="1. 开启“分类”页"></a>1. 开启“分类”页</h4><p>在终端运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page categories<br></code></pre></td></tr></table></figure>
+<p>然后去编辑生成的文件 <code>source/categories/index.md</code>，把内容改成：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 分类<br>date: 2025-11-28 20:00:00<br>type: categories  &lt;-- 这一行最关键，告诉主题这是分类页<br><span class="hljs-section">layout: categories</span><br><span class="hljs-section">---</span><br></code></pre></td></tr></table></figure>
+<p><em>(注意：正文留空即可，不要写东西)</em></p>
+<h4 id="2-开启“标签”页"><a href="#2-开启“标签”页" class="headerlink" title="2. 开启“标签”页"></a>2. 开启“标签”页</h4><p>在终端运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page tags<br></code></pre></td></tr></table></figure>
+<p>去编辑 <code>source/tags/index.md</code>，改为：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 标签<br>date: 2025-11-28 20:00:00<br>type: tags       &lt;-- 这一行最关键<br><span class="hljs-section">layout: tags</span><br><span class="hljs-section">---</span><br></code></pre></td></tr></table></figure>
+
+<p>做完这两步后，运行 <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code>，点击菜单栏的按钮，就能自动把你所有文章的分类和标签汇总展示出来了。</p>
+<hr>
+<h3 id="四、-常用指令速查表"><a href="#四、-常用指令速查表" class="headerlink" title="四、 常用指令速查表"></a>四、 常用指令速查表</h3><table>
+<thead>
+<tr>
+<th align="left">简写指令</th>
+<th align="left">完整指令</th>
+<th align="left">作用</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>hexo n &quot;...&quot;</code></td>
+<td align="left"><code>hexo new &quot;...&quot;</code></td>
+<td align="left"><strong>新建文章</strong></td>
+<td align="left">生成在 <code>source/_posts</code></td>
+</tr>
+<tr>
+<td align="left"><code>hexo s</code></td>
+<td align="left"><code>hexo server</code></td>
+<td align="left"><strong>启动本地预览</strong></td>
+<td align="left">访问 <code>localhost:4000</code></td>
+</tr>
+<tr>
+<td align="left"><code>hexo g</code></td>
+<td align="left"><code>hexo generate</code></td>
+<td align="left"><strong>生成网页</strong></td>
+<td align="left">编译 Markdown 为 HTML</td>
+</tr>
+<tr>
+<td align="left"><code>hexo d</code></td>
+<td align="left"><code>hexo deploy</code></td>
+<td align="left"><strong>部署&#x2F;发布</strong></td>
+<td align="left">推送到 GitHub</td>
+</tr>
+<tr>
+<td align="left"><code>hexo clean</code></td>
+<td align="left"><code>hexo clean</code></td>
+<td align="left"><strong>清理缓存</strong></td>
+<td align="left"><strong>遇到玄学问题先执行它</strong></td>
+</tr>
+<tr>
+<td align="left"><code>hexo new page &quot;...&quot;</code></td>
+<td align="left"><code>hexo new page &quot;...&quot;</code></td>
+<td align="left"><strong>新建独立页面</strong></td>
+<td align="left">如“关于我”、“友情链接”</td>
+</tr>
+</tbody></table>
+<h3 id="五、-如果我想换电脑写博客怎么办？"><a href="#五、-如果我想换电脑写博客怎么办？" class="headerlink" title="五、 如果我想换电脑写博客怎么办？"></a>五、 如果我想换电脑写博客怎么办？</h3><p>这是很多新手容易踩的坑。<strong>GitHub 仓库 (<code>yellow386.github.io</code>) 里存的只是生成的网页 (HTML)，不是你的源代码 (Markdown)！</strong></p>
+<p>为了防止电脑坏了导致博客源码丢失，建议你做最后一件重要的事：</p>
+<ol>
+<li>在 GitHub 上新建一个仓库，叫 <code>hexo-blog-source</code> (名字随意，设为 Private 私有仓库最好)。</li>
+<li>把你的 <code>s</code> 文件夹整个上传到这个新仓库里备份。</li>
+<li>以后每次写完，除了 <code>hexo d</code> 发布网页外，记得也要把源码 <code>git push</code> 到这个私有仓库备份。</li>
+</ol>
+<p>现在，你的博客技能树已经点满了！去写下你的第一篇技术总结吧！🚀</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/how-to-use-io/" class="print-no-link">#how to use io</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>usage</div>
+      <div>http://example.com/2025/11/28/usage/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>zc huang</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年11月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/11/28/my-first-blog/" title="my first blog">
+                        <span class="hidden-mobile">my first blog</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
