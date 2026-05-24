@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>my first kaggle</title>
+    <link href="/2026/05/24/my-first-kaggle/"/>
+    <url>/2026/05/24/my-first-kaggle/</url>
+    
+    <content type="html"><![CDATA[<h1 id="我的第一个-Kaggle-竞赛"><a href="#我的第一个-Kaggle-竞赛" class="headerlink" title="我的第一个 Kaggle 竞赛"></a>我的第一个 Kaggle 竞赛</h1><p>为了提升自己的实践能力，我大二开始在 Kaggle 上跑比赛。<br>在做 Titanic 项目时，我发现原始数据有缺失。<br>我一开始尝试用全局平均值填补年龄，并提取了头衔特征，结果发现公榜分数反而从 0.775 降到了 0.772。<br>经过排查，我意识到全局平均值破坏了数据的内在逻辑（比如给小男孩填了29岁），导致模型过拟合。<br>这让我深刻体会到了数据清洗的细节对模型泛化能力的重要性。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>kaggle</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>机器学习</tag>
+      
+      <tag>Python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>My first interview</title>
     <link href="/2026/01/01/my-first-interview/"/>
     <url>/2026/01/01/my-first-interview/</url>
@@ -49,13 +76,13 @@
     
     <tags>
       
+      <tag>Python</tag>
+      
       <tag>Java</tag>
       
       <tag>RuoYi</tag>
       
       <tag>macOS</tag>
-      
-      <tag>Python</tag>
       
     </tags>
     
