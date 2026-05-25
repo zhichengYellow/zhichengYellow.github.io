@@ -67,9 +67,9 @@
       
       <category>Java</category>
       
-      <category>实战记录</category>
-      
       <category>RuoYi</category>
+      
+      <category>实战记录</category>
       
     </categories>
     
@@ -186,7 +186,7 @@
     <link href="/2025/11/28/my-first-blog/"/>
     <url>/2025/11/28/my-first-blog/</url>
     
-    <content type="html"><![CDATA[<p>以此来纪念我创作的第一篇博客！<br>(建议把这句话写在正文里，而不是作为标签)</p>]]></content>
+    <content type="html"><![CDATA[<p>以此来纪念我创作的第一篇博客！</p>]]></content>
     
     
     <categories>
