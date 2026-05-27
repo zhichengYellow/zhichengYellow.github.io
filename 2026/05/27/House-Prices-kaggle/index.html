@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.svg">
   <link rel="icon" href="/img/favicon.svg">
   
-    <link rel="canonical" href="https://zhichengyellow.github.io/2026/05/24/my-first-kaggle/"/>
+    <link rel="canonical" href="https://zhichengyellow.github.io/2026/05/27/House-Prices-kaggle/"/>
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -21,15 +21,15 @@
   <meta name="author" content="Zhicheng Yellow">
   <meta name="keywords" content="学习,生活,记录">
   
-    <meta name="description" content="我的第一个 Kaggle 竞赛为了提升自己的实践能力，我大二开始在 Kaggle 上跑比赛。在做 Titanic 项目时，我发现原始数据有缺失。我一开始尝试用全局平均值填补年龄，并提取了头衔特征，结果发现公榜分数反而从 0.775 降到了 0.772。经过排查，我意识到全局平均值破坏了数据的内在逻辑（比如给小男孩填了29岁），导致模型过拟合。这让我深刻体会到了数据清洗的细节对模型泛化能力的重要性。">
+    <meta name="description" content="先总结一个万能寻路模板：import globimport pandas as pd def find_file(filename):    candidates &#x3D; []    for pat in [        f”&#x2F;kaggle&#x2F;input&#x2F;&#x2F;{filename}”,        f”.&#x2F;&#x2F;{filename}”,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my first kaggle">
-<meta property="og:url" content="https://zhichengyellow.github.io/2026/05/24/my-first-kaggle/index.html">
+<meta property="og:title" content="House Prices_kaggle">
+<meta property="og:url" content="https://zhichengyellow.github.io/2026/05/27/House-Prices-kaggle/index.html">
 <meta property="og:site_name" content="Zhicheng Yellow">
-<meta property="og:description" content="我的第一个 Kaggle 竞赛为了提升自己的实践能力，我大二开始在 Kaggle 上跑比赛。在做 Titanic 项目时，我发现原始数据有缺失。我一开始尝试用全局平均值填补年龄，并提取了头衔特征，结果发现公榜分数反而从 0.775 降到了 0.772。经过排查，我意识到全局平均值破坏了数据的内在逻辑（比如给小男孩填了29岁），导致模型过拟合。这让我深刻体会到了数据清洗的细节对模型泛化能力的重要性。">
+<meta property="og:description" content="先总结一个万能寻路模板：import globimport pandas as pd def find_file(filename):    candidates &#x3D; []    for pat in [        f”&#x2F;kaggle&#x2F;input&#x2F;&#x2F;{filename}”,        f”.&#x2F;&#x2F;{filename}”,">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-24T11:35:29.000Z">
-<meta property="article:modified_time" content="2026-05-24T12:05:48.659Z">
+<meta property="article:published_time" content="2026-05-27T12:38:16.000Z">
+<meta property="article:modified_time" content="2026-05-27T13:15:43.213Z">
 <meta property="article:author" content="Zhicheng Yellow">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="Python">
@@ -37,7 +37,7 @@
   
   
   
-  <title>my first kaggle - Zhicheng Yellow</title>
+  <title>House Prices_kaggle - Zhicheng Yellow</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="my first kaggle"></span>
+            <span id="subtitle" data-typed-text="House Prices_kaggle"></span>
           
         </div>
 
@@ -214,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-05-24 19:35" pubdate>
-          2026年5月24日 晚上
+        <time datetime="2026-05-27 20:38" pubdate>
+          2026年5月27日 晚上
         </time>
       </span>
     
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          254 字
+          193 字
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -274,12 +274,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">my first kaggle</h1>
+            <h1 id="seo-header">House Prices_kaggle</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="我的第一个-Kaggle-竞赛"><a href="#我的第一个-Kaggle-竞赛" class="headerlink" title="我的第一个 Kaggle 竞赛"></a>我的第一个 Kaggle 竞赛</h1><p>为了提升自己的实践能力，我大二开始在 Kaggle 上跑比赛。<br>在做 Titanic 项目时，我发现原始数据有缺失。<br>我一开始尝试用全局平均值填补年龄，并提取了头衔特征，结果发现公榜分数反而从 0.775 降到了 0.772。<br>经过排查，我意识到全局平均值破坏了数据的内在逻辑（比如给小男孩填了29岁），导致模型过拟合。<br>这让我深刻体会到了数据清洗的细节对模型泛化能力的重要性。<br>我自己跑 Titanic 新手赛时，惊讶地发现加了分组填补、复杂特征甚至更强模型，分数并没有显著提升。<br>这让我体会到，工业界的特征工程和大规模数据优化，和小样本比赛有很大不同。<br>这个过程让我学会了反思和辨析模型误区，而不是迷信工具或指标。</p>
+                <p>先总结一个万能寻路模板：<br>import glob<br>import pandas as pd</p>
+<p>def find_file(filename):<br>    candidates &#x3D; []<br>    for pat in [<br>        f”&#x2F;kaggle&#x2F;input&#x2F;<strong>&#x2F;{filename}”,<br>        f”.&#x2F;</strong>&#x2F;{filename}”,<br>        f”..&#x2F;<strong>&#x2F;{filename}”,<br>        f”&#x2F;content&#x2F;</strong>&#x2F;{filename}”,  # colab<br>    ]:<br>        candidates +&#x3D; glob.glob(pat, recursive&#x3D;True)<br>    return candidates[0] if candidates else None</p>
+<p>train_path &#x3D; find_file(“train.csv”)<br>test_path  &#x3D; find_file(“test.csv”)</p>
+<p>print(“train_path:”, train_path)<br>print(“test_path :”, test_path)</p>
+<p>train &#x3D; pd.read_csv(train_path)<br>test  &#x3D; pd.read_csv(test_path)</p>
+<p>通过这个项目真正学到的能力（从 Titanic 进阶）<br>评分函数驱动训练策略：理解 RMSLE → 必须 log 目标。<br>表格建模的语义处理：NA 不等于缺数据，很多是 None。<br>类别特征处理：One-Hot + 稀疏高维建模思路。<br>交叉验证与 OOF：用离线评估指导改进，减少“看 public 乱调参”。<br>融合思想：用互补模型提升泛化，而不是迷信单个模型更复杂。</p>
 
                 
               </div>
@@ -327,8 +332,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>my first kaggle</div>
-      <div>https://zhichengyellow.github.io/2026/05/24/my-first-kaggle/</div>
+      <div>House Prices_kaggle</div>
+      <div>https://zhichengyellow.github.io/2026/05/27/House-Prices-kaggle/</div>
     </div>
     <div class="license-meta">
       
@@ -340,7 +345,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年5月24日</div>
+          <div>2026年5月27日</div>
         </div>
       
       
@@ -372,18 +377,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/05/27/House-Prices-kaggle/" title="House Prices_kaggle">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">House Prices_kaggle</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/01/01/my-first-interview/" title="My first interview">
-                        <span class="hidden-mobile">My first interview</span>
+                      <a href="/2026/05/24/my-first-kaggle/" title="my first kaggle">
+                        <span class="hidden-mobile">my first kaggle</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
