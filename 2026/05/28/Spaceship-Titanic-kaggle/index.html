@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.svg">
   <link rel="icon" href="/img/favicon.svg">
   
-    <link rel="canonical" href="https://zhichengyellow.github.io/2026/05/28/Tips/"/>
+    <link rel="canonical" href="https://zhichengyellow.github.io/2026/05/28/Spaceship-Titanic-kaggle/"/>
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -21,22 +21,24 @@
   <meta name="author" content="Zhicheng Yellow">
   <meta name="keywords" content="学习,生活,记录">
   
-    <meta name="description" content="一  使用浏览器开发者工具（无需安装，即学即用）这是最直接的方法，通过控制台直接把网页的限制代码“消灭”掉： 在当前网页按下 F12（Mac 用户按 Cmd + Option + I）打开开发者工具。 切换到 Console（控制台） 标签页。 在底部的输入框中复制并粘贴以下代码，然后按 Enter（回车）： 12345678Object.defineProperty(document, &amp;#x2">
+    <meta name="description" content="1. TF-DF 框架对数据类型的独特处理机制这是使用 TF-DF 时最核心的工程经验：  原生支持缺失值与分类特征： 传统的 scikit-learn 模型通常需要手动进行缺失值填充（Imputation）和独热编码（One-Hot Encoding）。但 TF-DF 原生支持数值、分类和缺失值，不需要复杂的预处理。 布尔值（Boolean）局限性坑： 笔记中特别提到，当前版本的 TF-DF 不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tips">
-<meta property="og:url" content="https://zhichengyellow.github.io/2026/05/28/Tips/index.html">
+<meta property="og:title" content="Spaceship Titanic kaggle">
+<meta property="og:url" content="https://zhichengyellow.github.io/2026/05/28/Spaceship-Titanic-kaggle/index.html">
 <meta property="og:site_name" content="Zhicheng Yellow">
-<meta property="og:description" content="一  使用浏览器开发者工具（无需安装，即学即用）这是最直接的方法，通过控制台直接把网页的限制代码“消灭”掉： 在当前网页按下 F12（Mac 用户按 Cmd + Option + I）打开开发者工具。 切换到 Console（控制台） 标签页。 在底部的输入框中复制并粘贴以下代码，然后按 Enter（回车）： 12345678Object.defineProperty(document, &amp;#x2">
+<meta property="og:description" content="1. TF-DF 框架对数据类型的独特处理机制这是使用 TF-DF 时最核心的工程经验：  原生支持缺失值与分类特征： 传统的 scikit-learn 模型通常需要手动进行缺失值填充（Imputation）和独热编码（One-Hot Encoding）。但 TF-DF 原生支持数值、分类和缺失值，不需要复杂的预处理。 布尔值（Boolean）局限性坑： 笔记中特别提到，当前版本的 TF-DF 不">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-28T11:55:38.000Z">
-<meta property="article:modified_time" content="2026-05-28T13:05:41.637Z">
+<meta property="article:published_time" content="2026-05-28T13:42:08.000Z">
+<meta property="article:modified_time" content="2026-05-28T13:49:24.033Z">
 <meta property="article:author" content="Zhicheng Yellow">
-<meta property="article:tag" content="Chrome Tips">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Random Forest">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Tips - Zhicheng Yellow</title>
+  <title>Spaceship Titanic kaggle - Zhicheng Yellow</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Tips"></span>
+            <span id="subtitle" data-typed-text="Spaceship Titanic kaggle"></span>
           
         </div>
 
@@ -213,7 +215,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-05-28 19:55" pubdate>
+        <time datetime="2026-05-28 21:42" pubdate>
           2026年5月28日 晚上
         </time>
       </span>
@@ -225,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          740 字
         
       </span>
     
@@ -236,7 +238,7 @@
         
         
         
-          9 分钟
+          7 分钟
         
       </span>
     
@@ -273,37 +275,33 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Tips</h1>
+            <h1 id="seo-header">Spaceship Titanic kaggle</h1>
             
             
               <div class="markdown-body">
                 
-                <p>一  使用浏览器开发者工具（无需安装，即学即用）<br>这是最直接的方法，通过控制台直接把网页的限制代码“消灭”掉：</p>
-<p>在当前网页按下 F12（Mac 用户按 Cmd + Option + I）打开开发者工具。</p>
-<p>切换到 Console（控制台） 标签页。</p>
-<p>在底部的输入框中复制并粘贴以下代码，然后按 Enter（回车）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(<span class="hljs-variable language_">document</span>, <span class="hljs-string">&#x27;onpaste&#x27;</span>, &#123;<span class="hljs-attr">value</span>: <span class="hljs-literal">null</span>&#125;);<br><span class="hljs-variable language_">document</span>.<span class="hljs-property">onpaste</span> = <span class="hljs-literal">null</span>;<br><span class="hljs-variable language_">window</span>.<span class="hljs-property">onpaste</span> = <span class="hljs-literal">null</span>;<br><span class="hljs-comment">// 针对特定输入框解除限制</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;textarea, input&#x27;</span>).<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> &#123;<br>    el.<span class="hljs-property">onpaste</span> = <span class="hljs-literal">null</span>;<br>    el.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;paste&#x27;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> e.<span class="hljs-title function_">stopPropagation</span>(), <span class="hljs-literal">true</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
-<p>现在回网页试试，通常就可以直接粘贴了。</p>
-<p>二  控制台一行代码强制倍速（最安全、免安装）<br>这个方法不需要安装任何东西，直接利用浏览器内核命令去改视频的播放速度：</p>
-<p>播放网课视频时，按下 F12（Mac 用户 Cmd + Option + I）打开开发者工具。</p>
-<p>切换到 Console（控制台） 标签页。</p>
-<p>复制并粘贴下面这行代码，然后按 Enter（回车）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;video&#x27;</span>).<span class="hljs-property">playbackRate</span> = <span class="hljs-number">2.5</span>; <br></code></pre></td></tr></table></figure>
-<p>(注：末尾的 2.5 就是倍速，你可以自由改成 2.0、3.0 甚至更高。HTML5 底层最高支持 16 倍速。)</p>
-<p>利用“元素选择器”强行夺取控制权（最稳妥）<br>这个方法利用了浏览器的审查机制，能让控制台直接肉身“钻”进视频所在的图层：</p>
-<p>按 F12 打开开发者工具。</p>
-<p>点击工具栏左上角的“小箭头”图标（或者按下快捷键 Ctrl + Shift + C），激活元素选择器。<br>(注：就是最左上角那个像鼠标指针一样的图标)</p>
-<p>把鼠标移到网课的视频播放画面上，点击一下。</p>
-<p>此时右侧的代码区会自动高亮，关键是：浏览器的控制台环境此时已经被你强行带入了视频所在的隐藏图层。</p>
-<p>紧接着点击切换回 Console（控制台） 面板。</p>
-<p>清空之前的报错，重新输入并回车：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;video&#x27;</span>).<span class="hljs-property">playbackRate</span> = x.<span class="hljs-property">x</span>;<br></code></pre></td></tr></table></figure>
-<p>(注：把 x.x 替换成你想要的倍速，比如 2.0、3.0 或更高)<br>一旦平台的脚本检测到视频的倍速 &gt; 2.0，或者通过定时器发现你的播放进度条“跳跃得比正常快”，它就会在后台自动对视频发出 .pause()（暂停）指令，强行把视频死死按住。</p>
-<p>既然平台用代码来暂停，我们就可以用更高级的代码把网页的“暂停权限”给废掉，同时强行把速度提上去。</p>
-<p>🛠️ 终极解决方案：“防暂停金身”代码<br>请在刚才那个已经成功切换的控制台环境中，复制并粘贴下面这段全拦截代码，然后按下回车：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript">(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">let</span> video = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;video&#x27;</span>);<br>    <span class="hljs-keyword">if</span> (!video) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;错误：未找到视频，请确保控制台处于正确的 Iframe 环境中！&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">let</span> speed = <span class="hljs-number">3.0</span>; <span class="hljs-comment">// &lt;--- 在这里修改你想要的倍速（如 3.0 或 4.0）</span><br><br>    <span class="hljs-comment">// 1. 拦截并废掉网页脚本强行暂停视频的权限</span><br>    video.<span class="hljs-property">pause</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;🔒 [拦截成功] 网页检测到高倍速试图自动暂停视频，已被强行拒绝！&quot;</span>);<br>    &#125;;<br><br>    <span class="hljs-comment">// 2. 绕过平台的速率改变监听器（防止被平台发现并重置速度）</span><br>    video.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;ratechange&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) &#123;<br>        e.<span class="hljs-title function_">stopImmediatePropagation</span>();<br>    &#125;, <span class="hljs-literal">true</span>);<br><br>    <span class="hljs-comment">// 3. 修正：从 HTMLMediaElement 强行获取底层真实的播放速度控制权</span><br>    <span class="hljs-keyword">let</span> descriptor = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertyDescriptor</span>(<span class="hljs-title class_">HTMLMediaElement</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>, <span class="hljs-string">&#x27;playbackRate&#x27;</span>);<br>    <span class="hljs-keyword">if</span> (descriptor &amp;&amp; descriptor.<span class="hljs-property">set</span>) &#123;<br>        descriptor.<span class="hljs-property">set</span>.<span class="hljs-title function_">call</span>(video, speed);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;🚀 强开成功！当前实际速度已达 &quot;</span> + speed + <span class="hljs-string">&quot; 倍，防暂停机制已生效。&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 兜底方案</span><br>        video.<span class="hljs-property">playbackRate</span> = speed;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;🚀 强开成功（备用模式）！当前实际速度已达 &quot;</span> + speed + <span class="hljs-string">&quot; 倍。&quot;</span>);<br>    &#125;<br>&#125;)();<br></code></pre></td></tr></table></figure>
-<p>💡 运行后的现象：<br>运行后如果看到控制台打印出 🚀 强开成功！…，说明已经完美绕过了限制。</p>
-<p>此时视频会以你设定的超高倍速（比如 3.0 倍）疯狂向前跑，且平台无法再通过代码强制让它停下来。</p>
+                <h3 id="1-TF-DF-框架对数据类型的独特处理机制"><a href="#1-TF-DF-框架对数据类型的独特处理机制" class="headerlink" title="1. TF-DF 框架对数据类型的独特处理机制"></a>1. TF-DF 框架对数据类型的独特处理机制</h3><p>这是使用 TF-DF 时最核心的工程经验：</p>
+<ul>
+<li><strong>原生支持缺失值与分类特征</strong>： 传统的 scikit-learn 模型通常需要手动进行缺失值填充（Imputation）和独热编码（One-Hot Encoding）。但 TF-DF 原生支持数值、分类和缺失值，不需要复杂的预处理。</li>
+<li><strong>布尔值（Boolean）局限性坑</strong>： 笔记中特别提到，当前版本的 TF-DF 不支持布尔类型。因此，项目中必须使用 <code>.astype(int)</code> 将 <code>Transported</code>、<code>VIP</code>、<code>CryoSleep</code> 等布尔列转换为整型（<code>0</code> 和 <code>1</code>），并在转换前将缺失值填充为 <code>0</code>。</li>
+</ul>
+<h3 id="2-经典的实用特征工程（Feature-Engineering）"><a href="#2-经典的实用特征工程（Feature-Engineering）" class="headerlink" title="2. 经典的实用特征工程（Feature Engineering）"></a>2. 经典的实用特征工程（Feature Engineering）</h3><ul>
+<li><strong>复合文本拆分</strong>： 项目中的 <code>Cabin</code>（船舱号）数据格式为 <code>Deck/Cabin_num/Side</code>（甲板&#x2F;房间号&#x2F;半舷）。直接输入整条字符串很难让模型学到有效规律。</li>
+<li><strong>笔记要点</strong>： 掌握使用 Pandas 的 <code>str.split(&quot;/&quot;, expand=True)</code> 技巧，将一列高基数文本拆分为三个独立的强特征（<code>Deck</code>、<code>Cabin_num</code>、<code>Side</code>），这是表格竞赛中大幅提升分数的常规操作。</li>
+</ul>
+<h3 id="3-TensorFlow-高性能数据管道"><a href="#3-TensorFlow-高性能数据管道" class="headerlink" title="3. TensorFlow 高性能数据管道"></a>3. TensorFlow 高性能数据管道</h3><ul>
+<li><strong>格式转换</strong>： 模型训练前，必须将 Pandas 的 DataFrame 转换为 TensorFlow 专有的 <code>tf.data.Dataset</code> 格式。</li>
+<li><strong>关键 API</strong>： 记录 <code>tfdf.keras.pd_dataframe_to_tf_dataset(df, label=&quot;target&quot;)</code> 函数。需要记住，<code>tf.data.Dataset</code> 是专为 GPU&#x2F;TPU 等加速器优化的高性能数据加载库，在大数据集训练时非常关键。</li>
+</ul>
+<h3 id="4-随机森林特有的评估：袋外数据（OOB）"><a href="#4-随机森林特有的评估：袋外数据（OOB）" class="headerlink" title="4. 随机森林特有的评估：袋外数据（OOB）"></a>4. 随机森林特有的评估：袋外数据（OOB）</h3><ul>
+<li><strong>OOB (Out-of-Bag) 概念</strong>： 随机森林在构建每棵树时，使用的是有放回的随机抽样（Bootstrap）。这意味着大约有 $36.8%$ 的样本不会参与到某棵树的训练中，这些未参与的数据就是该棵树的“袋外数据”。</li>
+<li><strong>指标价值</strong>： OOB 分数（OOB Score）可以作为一种内置的、不需要额外划分验证集的交叉验证指标。项目中利用 <code>rf.make_inspector().training_logs()</code> 绘制了树的数量与 OOB 准确率的关系图，这能帮我们直观判断模型何时达到了收敛，以及是否需要调大树的数量（默认 300 棵）。</li>
+</ul>
+<h3 id="5-树模型的白盒可解释性（Explainability）"><a href="#5-树模型的白盒可解释性（Explainability）" class="headerlink" title="5. 树模型的白盒可解释性（Explainability）"></a>5. 树模型的白盒可解释性（Explainability）</h3><p>这是树模型超越深度学习神经网络的巨大优势：</p>
+<ul>
+<li><strong>模型可视化</strong>： 记录 <code>tfdf.model_plotter.plot_model_in_colab(model, tree_idx=0)</code> 方法。它能把随机森林中的某棵具体决策树的节点分裂逻辑（如 <code>CryoSleep &gt;= 0.5</code>）直接画出来，让黑盒模型变成白盒。</li>
+<li><strong>多维度特征重要性（Variable Importances）</strong>： TF-DF 提供了多种评估特征重要性的指标。项目中重点用到了 <code>NUM_AS_ROOT</code>（该特征被用作树根节点的次数）。根节点承载了最主要的分裂压力，次数越多说明该特征的全局区分度越高。从结果看，<code>CryoSleep</code>（冬眠状态）是决定乘客能否幸存的最关键因素。</li>
+</ul>
 
                 
               </div>
@@ -322,7 +320,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Tips/" class="category-chain-item">Tips</a>
+  <a href="/categories/kaggle/" class="category-chain-item">kaggle</a>
   
   
 
@@ -337,7 +335,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Chrome-Tips/" class="print-no-link">#Chrome Tips</a>
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/Random-Forest/" class="print-no-link">#Random Forest</a>
       
     </div>
   
@@ -349,8 +351,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Tips</div>
-      <div>https://zhichengyellow.github.io/2026/05/28/Tips/</div>
+      <div>Spaceship Titanic kaggle</div>
+      <div>https://zhichengyellow.github.io/2026/05/28/Spaceship-Titanic-kaggle/</div>
     </div>
     <div class="license-meta">
       
@@ -394,18 +396,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/05/28/Spaceship-Titanic-kaggle/" title="Spaceship Titanic kaggle">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spaceship Titanic kaggle</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/05/27/House-Prices-kaggle/" title="House Prices_kaggle">
-                        <span class="hidden-mobile">House Prices_kaggle</span>
+                      <a href="/2026/05/28/Tips/" title="Tips">
+                        <span class="hidden-mobile">Tips</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

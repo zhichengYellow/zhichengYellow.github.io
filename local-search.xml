@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Spaceship Titanic kaggle</title>
+    <link href="/2026/05/28/Spaceship-Titanic-kaggle/"/>
+    <url>/2026/05/28/Spaceship-Titanic-kaggle/</url>
+    
+    <content type="html"><![CDATA[<h3 id="1-TF-DF-框架对数据类型的独特处理机制"><a href="#1-TF-DF-框架对数据类型的独特处理机制" class="headerlink" title="1. TF-DF 框架对数据类型的独特处理机制"></a>1. TF-DF 框架对数据类型的独特处理机制</h3><p>这是使用 TF-DF 时最核心的工程经验：</p><ul><li><strong>原生支持缺失值与分类特征</strong>： 传统的 scikit-learn 模型通常需要手动进行缺失值填充（Imputation）和独热编码（One-Hot Encoding）。但 TF-DF 原生支持数值、分类和缺失值，不需要复杂的预处理。</li><li><strong>布尔值（Boolean）局限性坑</strong>： 笔记中特别提到，当前版本的 TF-DF 不支持布尔类型。因此，项目中必须使用 <code>.astype(int)</code> 将 <code>Transported</code>、<code>VIP</code>、<code>CryoSleep</code> 等布尔列转换为整型（<code>0</code> 和 <code>1</code>），并在转换前将缺失值填充为 <code>0</code>。</li></ul><h3 id="2-经典的实用特征工程（Feature-Engineering）"><a href="#2-经典的实用特征工程（Feature-Engineering）" class="headerlink" title="2. 经典的实用特征工程（Feature Engineering）"></a>2. 经典的实用特征工程（Feature Engineering）</h3><ul><li><strong>复合文本拆分</strong>： 项目中的 <code>Cabin</code>（船舱号）数据格式为 <code>Deck/Cabin_num/Side</code>（甲板&#x2F;房间号&#x2F;半舷）。直接输入整条字符串很难让模型学到有效规律。</li><li><strong>笔记要点</strong>： 掌握使用 Pandas 的 <code>str.split(&quot;/&quot;, expand=True)</code> 技巧，将一列高基数文本拆分为三个独立的强特征（<code>Deck</code>、<code>Cabin_num</code>、<code>Side</code>），这是表格竞赛中大幅提升分数的常规操作。</li></ul><h3 id="3-TensorFlow-高性能数据管道"><a href="#3-TensorFlow-高性能数据管道" class="headerlink" title="3. TensorFlow 高性能数据管道"></a>3. TensorFlow 高性能数据管道</h3><ul><li><strong>格式转换</strong>： 模型训练前，必须将 Pandas 的 DataFrame 转换为 TensorFlow 专有的 <code>tf.data.Dataset</code> 格式。</li><li><strong>关键 API</strong>： 记录 <code>tfdf.keras.pd_dataframe_to_tf_dataset(df, label=&quot;target&quot;)</code> 函数。需要记住，<code>tf.data.Dataset</code> 是专为 GPU&#x2F;TPU 等加速器优化的高性能数据加载库，在大数据集训练时非常关键。</li></ul><h3 id="4-随机森林特有的评估：袋外数据（OOB）"><a href="#4-随机森林特有的评估：袋外数据（OOB）" class="headerlink" title="4. 随机森林特有的评估：袋外数据（OOB）"></a>4. 随机森林特有的评估：袋外数据（OOB）</h3><ul><li><strong>OOB (Out-of-Bag) 概念</strong>： 随机森林在构建每棵树时，使用的是有放回的随机抽样（Bootstrap）。这意味着大约有 $36.8%$ 的样本不会参与到某棵树的训练中，这些未参与的数据就是该棵树的“袋外数据”。</li><li><strong>指标价值</strong>： OOB 分数（OOB Score）可以作为一种内置的、不需要额外划分验证集的交叉验证指标。项目中利用 <code>rf.make_inspector().training_logs()</code> 绘制了树的数量与 OOB 准确率的关系图，这能帮我们直观判断模型何时达到了收敛，以及是否需要调大树的数量（默认 300 棵）。</li></ul><h3 id="5-树模型的白盒可解释性（Explainability）"><a href="#5-树模型的白盒可解释性（Explainability）" class="headerlink" title="5. 树模型的白盒可解释性（Explainability）"></a>5. 树模型的白盒可解释性（Explainability）</h3><p>这是树模型超越深度学习神经网络的巨大优势：</p><ul><li><strong>模型可视化</strong>： 记录 <code>tfdf.model_plotter.plot_model_in_colab(model, tree_idx=0)</code> 方法。它能把随机森林中的某棵具体决策树的节点分裂逻辑（如 <code>CryoSleep &gt;= 0.5</code>）直接画出来，让黑盒模型变成白盒。</li><li><strong>多维度特征重要性（Variable Importances）</strong>： TF-DF 提供了多种评估特征重要性的指标。项目中重点用到了 <code>NUM_AS_ROOT</code>（该特征被用作树根节点的次数）。根节点承载了最主要的分裂压力，次数越多说明该特征的全局区分度越高。从结果看，<code>CryoSleep</code>（冬眠状态）是决定乘客能否幸存的最关键因素。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>kaggle</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>机器学习</tag>
+      
+      <tag>Python</tag>
+      
+      <tag>Random Forest</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Tips</title>
     <link href="/2026/05/28/Tips/"/>
     <url>/2026/05/28/Tips/</url>
@@ -49,6 +78,8 @@
       
       <tag>Python</tag>
       
+      <tag>Binary Classification</tag>
+      
     </tags>
     
   </entry>
@@ -75,6 +106,8 @@
       <tag>机器学习</tag>
       
       <tag>Python</tag>
+      
+      <tag>Random Forest</tag>
       
     </tags>
     
