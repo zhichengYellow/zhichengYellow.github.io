@@ -21,15 +21,15 @@
   <meta name="author" content="Zhicheng Yellow">
   <meta name="keywords" content="学习,生活,记录">
   
-    <meta name="description" content="先总结一个万能寻路模板：import globimport pandas as pd def find_file(filename):    candidates &#x3D; []    for pat in [        f”&#x2F;kaggle&#x2F;input&#x2F;&#x2F;{filename}”,        f”.&#x2F;&#x2F;{filename}”,">
+    <meta name="description" content="先总结一个万能寻路模板： 12345678910111213141516171819202122import globimport pandas as pddef find_file(filename):    candidates &#x3D; []    for pat in [        f&quot;&#x2F;kaggle&#x2F;input&#x2F;**&#x2F;&#123;filename&#125;&quot;,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="House Prices_kaggle">
 <meta property="og:url" content="https://zhichengyellow.github.io/2026/05/27/House-Prices-kaggle/index.html">
 <meta property="og:site_name" content="Zhicheng Yellow">
-<meta property="og:description" content="先总结一个万能寻路模板：import globimport pandas as pd def find_file(filename):    candidates &#x3D; []    for pat in [        f”&#x2F;kaggle&#x2F;input&#x2F;&#x2F;{filename}”,        f”.&#x2F;&#x2F;{filename}”,">
+<meta property="og:description" content="先总结一个万能寻路模板： 12345678910111213141516171819202122import globimport pandas as pddef find_file(filename):    candidates &#x3D; []    for pat in [        f&quot;&#x2F;kaggle&#x2F;input&#x2F;**&#x2F;&#123;filename&#125;&quot;,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-27T12:38:16.000Z">
-<meta property="article:modified_time" content="2026-05-27T13:15:43.213Z">
+<meta property="article:modified_time" content="2026-05-28T13:07:28.295Z">
 <meta property="article:author" content="Zhicheng Yellow">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="Python">
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          193 字
+          199 字
         
       </span>
     
@@ -279,12 +279,16 @@
             
               <div class="markdown-body">
                 
-                <p>先总结一个万能寻路模板：<br>import glob<br>import pandas as pd</p>
-<p>def find_file(filename):<br>    candidates &#x3D; []<br>    for pat in [<br>        f”&#x2F;kaggle&#x2F;input&#x2F;<strong>&#x2F;{filename}”,<br>        f”.&#x2F;</strong>&#x2F;{filename}”,<br>        f”..&#x2F;<strong>&#x2F;{filename}”,<br>        f”&#x2F;content&#x2F;</strong>&#x2F;{filename}”,  # colab<br>    ]:<br>        candidates +&#x3D; glob.glob(pat, recursive&#x3D;True)<br>    return candidates[0] if candidates else None</p>
-<p>train_path &#x3D; find_file(“train.csv”)<br>test_path  &#x3D; find_file(“test.csv”)</p>
-<p>print(“train_path:”, train_path)<br>print(“test_path :”, test_path)</p>
-<p>train &#x3D; pd.read_csv(train_path)<br>test  &#x3D; pd.read_csv(test_path)</p>
-<p>通过这个项目真正学到的能力（从 Titanic 进阶）<br>评分函数驱动训练策略：理解 RMSLE → 必须 log 目标。<br>表格建模的语义处理：NA 不等于缺数据，很多是 None。<br>类别特征处理：One-Hot + 稀疏高维建模思路。<br>交叉验证与 OOF：用离线评估指导改进，减少“看 public 乱调参”。<br>融合思想：用互补模型提升泛化，而不是迷信单个模型更复杂。</p>
+                <p>先总结一个万能寻路模板：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> glob<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_file</span>(<span class="hljs-params">filename</span>):<br>    candidates = []<br>    <span class="hljs-keyword">for</span> pat <span class="hljs-keyword">in</span> [<br>        <span class="hljs-string">f&quot;/kaggle/input/**/<span class="hljs-subst">&#123;filename&#125;</span>&quot;</span>,<br>        <span class="hljs-string">f&quot;./**/<span class="hljs-subst">&#123;filename&#125;</span>&quot;</span>,<br>        <span class="hljs-string">f&quot;../**/<span class="hljs-subst">&#123;filename&#125;</span>&quot;</span>,<br>        <span class="hljs-string">f&quot;/content/**/<span class="hljs-subst">&#123;filename&#125;</span>&quot;</span>,  <span class="hljs-comment"># colab</span><br>    ]:<br>        candidates += glob.glob(pat, recursive=<span class="hljs-literal">True</span>)<br>    <span class="hljs-keyword">return</span> candidates[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> candidates <span class="hljs-keyword">else</span> <span class="hljs-literal">None</span><br><br>train_path = find_file(<span class="hljs-string">&quot;train.csv&quot;</span>)<br>test_path  = find_file(<span class="hljs-string">&quot;test.csv&quot;</span>)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;train_path:&quot;</span>, train_path)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;test_path :&quot;</span>, test_path)<br><br>train = pd.read_csv(train_path)<br>test  = pd.read_csv(test_path)<br></code></pre></td></tr></table></figure>
+
+<h3 id="通过这个项目真正学到的能力（从-Titanic-进阶）"><a href="#通过这个项目真正学到的能力（从-Titanic-进阶）" class="headerlink" title="通过这个项目真正学到的能力（从 Titanic 进阶）"></a>通过这个项目真正学到的能力（从 Titanic 进阶）</h3><ul>
+<li><strong>评分函数驱动训练策略</strong>：理解 RMSLE → 必须 log 目标。</li>
+<li><strong>表格建模的语义处理</strong>：NA 不等于缺数据，很多是 None。</li>
+<li><strong>类别特征处理</strong>：One-Hot + 稀疏高维建模思路。</li>
+<li><strong>交叉验证与 OOF</strong>：用离线评估指导改进，减少“看 public 乱调参”。</li>
+<li><strong>融合思想</strong>：用互补模型提升泛化，而不是迷信单个模型更复杂。</li>
+</ul>
 
                 
               </div>
