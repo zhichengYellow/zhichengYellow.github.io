@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.svg">
   <link rel="icon" href="/img/favicon.svg">
   
-    <link rel="canonical" href="https://zhichengyellow.github.io/2026/05/27/House-Prices-kaggle/"/>
+    <link rel="canonical" href="https://zhichengyellow.github.io/2026/05/28/Tips/"/>
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -21,23 +21,22 @@
   <meta name="author" content="Zhicheng Yellow">
   <meta name="keywords" content="学习,生活,记录">
   
-    <meta name="description" content="先总结一个万能寻路模板：import globimport pandas as pd def find_file(filename):    candidates &#x3D; []    for pat in [        f”&#x2F;kaggle&#x2F;input&#x2F;&#x2F;{filename}”,        f”.&#x2F;&#x2F;{filename}”,">
+    <meta name="description" content="一  使用浏览器开发者工具（无需安装，即学即用）这是最直接的方法，通过控制台直接把网页的限制代码“消灭”掉： 在当前网页按下 F12（Mac 用户按 Cmd + Option + I）打开开发者工具。 切换到 Console（控制台） 标签页。 在底部的输入框中复制并粘贴以下代码，然后按 Enter（回车）： JavaScript Object.defineProperty(document, ‘">
 <meta property="og:type" content="article">
-<meta property="og:title" content="House Prices_kaggle">
-<meta property="og:url" content="https://zhichengyellow.github.io/2026/05/27/House-Prices-kaggle/index.html">
+<meta property="og:title" content="Tips">
+<meta property="og:url" content="https://zhichengyellow.github.io/2026/05/28/Tips/index.html">
 <meta property="og:site_name" content="Zhicheng Yellow">
-<meta property="og:description" content="先总结一个万能寻路模板：import globimport pandas as pd def find_file(filename):    candidates &#x3D; []    for pat in [        f”&#x2F;kaggle&#x2F;input&#x2F;&#x2F;{filename}”,        f”.&#x2F;&#x2F;{filename}”,">
+<meta property="og:description" content="一  使用浏览器开发者工具（无需安装，即学即用）这是最直接的方法，通过控制台直接把网页的限制代码“消灭”掉： 在当前网页按下 F12（Mac 用户按 Cmd + Option + I）打开开发者工具。 切换到 Console（控制台） 标签页。 在底部的输入框中复制并粘贴以下代码，然后按 Enter（回车）： JavaScript Object.defineProperty(document, ‘">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-27T12:38:16.000Z">
-<meta property="article:modified_time" content="2026-05-27T13:15:43.213Z">
+<meta property="article:published_time" content="2026-05-28T11:55:38.000Z">
+<meta property="article:modified_time" content="2026-05-28T11:59:46.675Z">
 <meta property="article:author" content="Zhicheng Yellow">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Chrome Tips">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>House Prices_kaggle - Zhicheng Yellow</title>
+  <title>Tips - Zhicheng Yellow</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="House Prices_kaggle"></span>
+            <span id="subtitle" data-typed-text="Tips"></span>
           
         </div>
 
@@ -214,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-05-27 20:38" pubdate>
-          2026年5月27日 晚上
+        <time datetime="2026-05-28 19:55" pubdate>
+          2026年5月28日 晚上
         </time>
       </span>
     
@@ -226,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          193 字
+          305 字
         
       </span>
     
@@ -237,7 +236,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -274,17 +273,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">House Prices_kaggle</h1>
+            <h1 id="seo-header">Tips</h1>
             
             
               <div class="markdown-body">
                 
-                <p>先总结一个万能寻路模板：<br>import glob<br>import pandas as pd</p>
-<p>def find_file(filename):<br>    candidates &#x3D; []<br>    for pat in [<br>        f”&#x2F;kaggle&#x2F;input&#x2F;<strong>&#x2F;{filename}”,<br>        f”.&#x2F;</strong>&#x2F;{filename}”,<br>        f”..&#x2F;<strong>&#x2F;{filename}”,<br>        f”&#x2F;content&#x2F;</strong>&#x2F;{filename}”,  # colab<br>    ]:<br>        candidates +&#x3D; glob.glob(pat, recursive&#x3D;True)<br>    return candidates[0] if candidates else None</p>
-<p>train_path &#x3D; find_file(“train.csv”)<br>test_path  &#x3D; find_file(“test.csv”)</p>
-<p>print(“train_path:”, train_path)<br>print(“test_path :”, test_path)</p>
-<p>train &#x3D; pd.read_csv(train_path)<br>test  &#x3D; pd.read_csv(test_path)</p>
-<p>通过这个项目真正学到的能力（从 Titanic 进阶）<br>评分函数驱动训练策略：理解 RMSLE → 必须 log 目标。<br>表格建模的语义处理：NA 不等于缺数据，很多是 None。<br>类别特征处理：One-Hot + 稀疏高维建模思路。<br>交叉验证与 OOF：用离线评估指导改进，减少“看 public 乱调参”。<br>融合思想：用互补模型提升泛化，而不是迷信单个模型更复杂。</p>
+                <p>一  使用浏览器开发者工具（无需安装，即学即用）<br>这是最直接的方法，通过控制台直接把网页的限制代码“消灭”掉：</p>
+<p>在当前网页按下 F12（Mac 用户按 Cmd + Option + I）打开开发者工具。</p>
+<p>切换到 Console（控制台） 标签页。</p>
+<p>在底部的输入框中复制并粘贴以下代码，然后按 Enter（回车）：</p>
+<p>JavaScript</p>
+<p>Object.defineProperty(document, ‘onpaste’, {value: null});<br>document.onpaste &#x3D; null;<br>window.onpaste &#x3D; null;<br>&#x2F;&#x2F; 针对特定输入框解除限制<br>document.querySelectorAll(‘textarea, input’).forEach(el &#x3D;&gt; {<br>    el.onpaste &#x3D; null;<br>    el.addEventListener(‘paste’, e &#x3D;&gt; e.stopPropagation(), true);<br>});</p>
+<p>现在回网页试试，通常就可以直接粘贴了。</p>
+<p>二  控制台一行代码强制倍速（最安全、免安装）<br>这个方法不需要安装任何东西，直接利用浏览器内核命令去改视频的播放速度：</p>
+<p>播放网课视频时，按下 F12（Mac 用户 Cmd + Option + I）打开开发者工具。</p>
+<p>切换到 Console（控制台） 标签页。</p>
+<p>复制并粘贴下面这行代码，然后按 Enter（回车）：</p>
+<p>JavaScript<br>document.querySelector(‘video’).playbackRate &#x3D; 2.5;<br>(注：末尾的 2.5 就是倍速，你可以自由改成 2.0、3.0 甚至更高。HTML5 底层最高支持 16 倍速。)</p>
 
                 
               </div>
@@ -303,7 +308,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/kaggle/" class="category-chain-item">kaggle</a>
+  <a href="/categories/Tips/" class="category-chain-item">Tips</a>
   
   
 
@@ -318,9 +323,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
-      
-        <a href="/tags/Python/" class="print-no-link">#Python</a>
+        <a href="/tags/Chrome-Tips/" class="print-no-link">#Chrome Tips</a>
       
     </div>
   
@@ -332,8 +335,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>House Prices_kaggle</div>
-      <div>https://zhichengyellow.github.io/2026/05/27/House-Prices-kaggle/</div>
+      <div>Tips</div>
+      <div>https://zhichengyellow.github.io/2026/05/28/Tips/</div>
     </div>
     <div class="license-meta">
       
@@ -345,7 +348,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年5月27日</div>
+          <div>2026年5月28日</div>
         </div>
       
       
@@ -377,18 +380,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/05/28/Tips/" title="Tips">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Tips</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/05/24/my-first-kaggle/" title="my first kaggle">
-                        <span class="hidden-mobile">my first kaggle</span>
+                      <a href="/2026/05/27/House-Prices-kaggle/" title="House Prices_kaggle">
+                        <span class="hidden-mobile">House Prices_kaggle</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
